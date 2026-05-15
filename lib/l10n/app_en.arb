@@ -1,0 +1,40 @@
+{
+  "appTitle": "My Music",
+  "songs": "Songs",
+  "playlist": "Playlist",
+  "settings": "Settings",
+  "nowPlaying": "Now Playing",
+
+  "search": "Search",
+  "refresh": "Refresh",
+  "noSongs": "No songs found",
+  "permissionRequired": "Permission Required",
+  "openSettings": "Open Settings",
+
+  "addToPlaylist": "Add to playlist",
+  "share": "Share",
+  "songInfo": "Song info",
+  "deleteSong": "Delete song",
+
+  "playback": "Playback",
+  "shuffle": "Shuffle",
+  "repeat": "Repeat",
+  "repeatAll": "Repeat all",
+  "repeatOne": "Repeat one",
+  "on": "On",
+  "off": "Off",
+  "unknown": "Unknown",
+
+  "volume": "Volume",
+
+  "language": "Language",
+  "changeLanguage": "Change language",
+  "vietnamese": "Vietnamese",
+  "english": "English",
+
+  "app": "Application",
+  "appInfo": "App information",
+  "about": "About app",
+  "recent": "Recently Played",
+  "noRecentSongs": "No recent songs"
+}

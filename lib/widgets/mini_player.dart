@@ -1,8 +1,8 @@
 import 'dart:io';
-
+import '../utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../utils/duration_formatter.dart';
 import '../providers/audio_provider.dart';
 import '../screens/now_playing_screen.dart';
 import '../models/playback_state_model.dart';

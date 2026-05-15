@@ -2,11 +2,15 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../models/playback_state_model.dart';
+import '../models/song_model.dart';
+import 'audio_handler_service.dart';
 
 class AudioPlayerService {
+  final MyAudioHandler _handler;
 
-  final AudioPlayer _audioPlayer =
-  AudioPlayer();
+  AudioPlayerService(this._handler);
+
+  AudioPlayer get _audioPlayer => _handler.player;
 
   Stream<Duration> get positionStream => _audioPlayer.positionStream;
   Stream<Duration?> get durationStream => _audioPlayer.durationStream;
@@ -15,27 +19,14 @@ class AudioPlayerService {
 
   Duration get currentPosition => _audioPlayer.position;
   Duration? get currentDuration => _audioPlayer.duration;
-
   bool get isPlaying => _audioPlayer.playing;
 
   Stream<PlaybackState> get playbackStateStream {
-
-    return Rx.combineLatest3<
-        Duration,
-        Duration?,
-        bool,
-        PlaybackState>(
-
+    return Rx.combineLatest3<Duration, Duration?, bool, PlaybackState>(
       positionStream,
       durationStream,
       playingStream,
-
-          (
-          position,
-          duration,
-          isPlaying,
-          ) {
-
+          (position, duration, isPlaying) {
         return PlaybackState(
           position: position,
           duration: duration ?? Duration.zero,
@@ -45,76 +36,29 @@ class AudioPlayerService {
     );
   }
 
-  Future<void> loadAudio(
-      String filePath,
-      ) async {
-
-    try {
-
-      await _audioPlayer.stop();
-
-      await _audioPlayer.setFilePath(
-        filePath,
-      );
-
-    } catch (e) {
-
-      throw Exception(
-        'Error loading audio: $e',
-      );
-    }
-  }
-
-  Future<void> play() async {
-    await _audioPlayer.play();
-  }
-
-  Future<void> pause() async {
-    await _audioPlayer.pause();
-  }
-
-  Future<void> stop() async {
-    await _audioPlayer.stop();
-  }
-
-  Future<void> seek(
-      Duration position,
-      ) async {
-
-    await _audioPlayer.seek(
-      position,
+  Future<void> loadSong(SongModel song) async {
+    await _handler.loadSong(
+      id: song.id,
+      title: song.title,
+      artist: song.artist,
+      album: song.album,
+      filePath: song.filePath,
     );
   }
 
-  Future<void> setVolume(
-      double volume,
-      ) async {
+  Future<void> play() => _handler.play();
 
-    await _audioPlayer.setVolume(
-      volume,
-    );
-  }
+  Future<void> pause() => _handler.pause();
 
-  Future<void> setSpeed(
-      double speed,
-      ) async {
+  Future<void> stop() => _handler.stop();
 
-    await _audioPlayer.setSpeed(
-      speed,
-    );
-  }
+  Future<void> seek(Duration position) => _handler.seek(position);
 
-  Future<void> setLoopMode(
-      LoopMode loopMode,
-      ) async {
+  Future<void> setVolume(double volume) => _handler.setVolume(volume);
 
-    await _audioPlayer.setLoopMode(
-      loopMode,
-    );
-  }
+  Future<void> setSpeed(double speed) => _handler.setSpeed(speed);
 
-  Future<void> dispose() async {
+  Future<void> setLoopMode(LoopMode loopMode) => _handler.setLoopMode(loopMode);
 
-    await _audioPlayer.dispose();
-  }
+  Future<void> dispose() => _handler.disposePlayer();
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/duration_formatter.dart';
 
 class ProgressBar extends StatelessWidget {
   final Duration position;
