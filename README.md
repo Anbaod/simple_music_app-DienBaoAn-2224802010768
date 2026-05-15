@@ -8,6 +8,7 @@ Now Playing screen
 <img width="304" height="648" alt="image" src="https://github.com/user-attachments/assets/e939849e-b98f-4111-bf92-2e3888e183c0" />
 
 Mini player
+
 <img width="303" height="649" alt="image" src="https://github.com/user-attachments/assets/be9f0b3c-971d-492f-8487-6001b33d75ad" />
 
 Playlist screen
