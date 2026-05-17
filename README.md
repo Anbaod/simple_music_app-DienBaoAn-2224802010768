@@ -1,4 +1,7 @@
 # simple_music_app
+
+Link demo:https://drive.google.com/drive/folders/1j0ISmVHatthmx6bxn_e57BPWdk9XpE60?usp=sharing
+
 Home screen with song list
 
 <img width="305" height="656" alt="image" src="https://github.com/user-attachments/assets/b51db80d-2618-465e-9aed-61454bd6ba26" />
